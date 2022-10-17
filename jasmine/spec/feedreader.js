@@ -106,16 +106,32 @@ $(function() {
         it('contains entry', function(done){
             var feed = document.querySelector('.feed');
             expect(feed.length).toBeGreaterThan(0);
+            done();
         });
 
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
-        
+        var previousFeed, nextFeed;
+
+        beforeEach(function(done) {
+            loadFeed(0, function(){
+                previousFeed = $('.entry-link').attr('href');
+
+                loadFeed(1, function() {
+                    nextFeed = $('.entry-link').attr('href');
+                });
+            });
+            done();
+        });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('new feed load', function(done){
+            expect(nextFeed).not.toBe(previousFeed);
+            done();
+        });
     });
 }());
