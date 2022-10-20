@@ -68,7 +68,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('default hidden menu', function(){
-            expect(body.classList.contains('menu-hidden').toBe(true));
+            expect(body.classList).toContain('menu-hidden');
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -80,10 +80,10 @@ $(function() {
             const menuIcon = document.querySelector('.menu-icon-link');
 
             menuIcon.click();
-            expect(body.classList.contains('menu-hidden').toBe(false));
+            expect(body.classList).not.toContain('menu-hidden');
 
             menuIcon.click();
-            expect(body.classList.contains('menu-hidden').toBe(true));
+            expect(body.classList).toContain('menu-hidden');
             
          });
     });
