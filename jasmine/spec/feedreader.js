@@ -80,10 +80,10 @@ $(function() {
             const menuIcon = document.querySelector('.menu-icon-link');
 
             menuIcon.click();
-            expect(body.classList).not.toContain('menu-hidden');
+            expect(body.classList.contains('menu-hidden').toBe(false));
 
             menuIcon.click();
-            expect(body.classList).toContain('menu-hidden');
+            expect(body.classList.contains('menu-hidden').toBe(true));
             
          });
     });
