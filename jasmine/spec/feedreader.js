@@ -80,11 +80,13 @@ $(function() {
             const menuIcon = document.querySelector('.menu-icon-link');
 
             menuIcon.click();
-            expect(body.className).toBe('menu-hidden');
+            expect(body.classList).toContain('menu-hidden');
+            // expect(body.className).toBe('menu-hidden');
             // menuIcon.click();
 
             menuIcon.click();
-            expect(body.className).toBe('menu-hidden');
+            // expect(body.className).toBe('menu-hidden');
+            expect(body.classList).toContain('menu-hidden');
             
          });
     });
@@ -118,10 +120,12 @@ $(function() {
 
         beforeEach(function(done) {
             loadFeed(0, function(){
-                previousFeed = $('.feed a')[0].textContent;
+                previousFeed = $('.feed').html();
+                // previousFeed = $('.feed a')[0].textContent;
 
                 loadFeed(1, function() {
-                    nextFeed = $('.feed a')[0].textContent;
+                    nextFeed = $('.feed').html();
+                    // nextFeed = $('.feed a')[0].textContent;
                     done();
                 });
             });
